@@ -8,6 +8,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_brands_on_name  (name)
+#
 
 class Brand < ApplicationRecord
     validates :name, :link_url, presence: true

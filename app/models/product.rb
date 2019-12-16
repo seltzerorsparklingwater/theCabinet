@@ -12,6 +12,10 @@
 #  updated_at      :datetime         not null
 #  brand_id        :integer          not null
 #
+# Indexes
+#
+#  index_products_on_brand_id  (brand_id)
+#
 
 class Product < ApplicationRecord
     #affiliate_links will now accept a Hash rather than String
@@ -22,4 +26,5 @@ class Product < ApplicationRecord
         primary_key: :id,
         foreign_key: :brand_id,
         class_name: :Brand
+
 end
