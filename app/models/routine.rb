@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: routines
+#
+#  id           :bigint           not null, primary key
+#  shelfie_url  :string
+#  steps_subdoc :string           not null
+#  title        :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  author_id    :integer          not null
+#
+
 class Routine < ApplicationRecord
     #steps_subdoc will now accept a Hash rather than String
     serialize :steps_subdoc, Hash
