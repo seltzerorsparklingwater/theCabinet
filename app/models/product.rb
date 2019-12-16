@@ -14,7 +14,12 @@
 #
 
 class Product < ApplicationRecord
-    #steps_subdoc will now accept a Hash rather than String
+    #affiliate_links will now accept a Hash rather than String
     serialize :affiliate_links, Hash
     validates :affiliate_links, :name, :brand_id, presence: true
+
+    belongs_to :brand,
+        primary_key: :id,
+        foreign_key: :brand_id,
+        class_name: :Brand
 end
