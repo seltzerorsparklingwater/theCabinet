@@ -25,6 +25,9 @@ class Product < ApplicationRecord
     belongs_to :brand,
         primary_key: :id,
         foreign_key: :brand_id,
-        class_name: :Brand
+        class_name: :Brand 
+    
+    has_many :routine_products
+    has_many :routines, :through => :routine_products
 
 end
