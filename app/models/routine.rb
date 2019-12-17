@@ -22,6 +22,4 @@ class Routine < ApplicationRecord
         foreign_key: :author_id,
         class_name: :User
 
-    has_many :routine_products
-    has_many :products, :through => :routine_products
 end

@@ -28,6 +28,6 @@ class Product < ApplicationRecord
         class_name: :Brand 
     
     has_many :routine_products
-    has_many :routines, :through => :routine_products
+    has_many :steps, :through => :routine_products
 
 end

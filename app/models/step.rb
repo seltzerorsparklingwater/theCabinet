@@ -13,5 +13,6 @@
 class Step < ApplicationRecord
     validates :routine_id, :step_number_in_routine, :description, presence: true
 
-    
+    has_many :routine_products
+    has_many :products, :through => :routine_products
 end
