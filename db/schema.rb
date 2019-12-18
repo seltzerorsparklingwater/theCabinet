@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_17_131929) do
+ActiveRecord::Schema.define(version: 2019_12_18_112747) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "brands", force: :cascade do |t|
@@ -26,12 +27,13 @@ ActiveRecord::Schema.define(version: 2019_12_17_131929) do
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.integer "brand_id", null: false
-    t.string "affiliate_links", null: false
     t.string "photo_url"
     t.string "cos_dna_url"
     t.string "product_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.hstore "affiliate_links"
+    t.index ["affiliate_links"], name: "index_products_on_affiliate_links", using: :gin
     t.index ["brand_id"], name: "index_products_on_brand_id"
   end
 
