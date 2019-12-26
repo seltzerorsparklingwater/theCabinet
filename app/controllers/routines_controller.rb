@@ -1,4 +1,6 @@
 class RoutinesController < ApplicationController
+    skip_before_action :verify_authenticity_token
+
   def index
     if params[:user_id]
         routines = Routine.where(author_id: params[:user_id])
@@ -18,7 +20,11 @@ class RoutinesController < ApplicationController
   end
 
   def show
-    routine = Routine.where(author_id: params[:id])
+    if params[:id]
+        routine = Routine.where(id: params[:id])
+    else
+        routine = Routine.where(author_id: params[:id])
+    end
     render json: routine
   end
 
