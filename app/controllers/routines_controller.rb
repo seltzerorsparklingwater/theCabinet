@@ -1,6 +1,10 @@
 class RoutinesController < ApplicationController
   def index
-    routines = Routine.where(author_id: params[:author_id])
+    if params[:user_id]
+        routines = Routine.where(author_id: params[:user_id])
+    else
+        routines = Routine.all
+    end
     render json: routines
   end
 
@@ -14,7 +18,7 @@ class RoutinesController < ApplicationController
   end
 
   def show
-    routine = Routine.all
+    routine = Routine.where(author_id: params[:id])
     render json: routine
   end
 
